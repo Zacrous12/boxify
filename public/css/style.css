@@ -46,3 +46,48 @@ ul {
     border-bottom: 0;
     padding: 0 40px 0 40px;
 }
+.new-ideas {
+    width: 40%;
+}
+.descriptor {
+    font-size: 2rem;
+    padding-left: 4rem;
+}
+.idea-list > li {
+    padding-top: 2rem;
+}
+.profiles {
+    width: 60%;
+}
+.profiles > div {
+    padding: 4rem;
+}
+.top-ideas {
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+.top-ideas > a {
+    padding: 2rem;
+}
+.main {
+    display: flex;
+    font-size: 3rem;
+    justify-content: center;
+}
+h3 {
+    font-size: 4rem;
+}
+.popular {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2rem;
+}
+.popular > section {
+    display: flex;
+    height: 40rem;
+    flex-direction: column;
+    width: 20%;
+    padding: 10rem;
+    border: double black 5px
+}
