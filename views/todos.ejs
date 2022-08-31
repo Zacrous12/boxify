@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Todos</h1>
+    <h1>How can we make our company better?</h1>
     <ul>
     <% todos.forEach( el => { %>
             <li class='todoItem' data-id='<%=el._id%>'>
@@ -22,8 +22,8 @@
     <h2><%= user.userName %> has <%= left %> things left to do.</h2>
 
     <form action="/todos/createTodo" method='POST'>
-        <input type="text" placeholder="Enter name" name='userName' value=<%= user.userName %>>
-        <input type="text" placeholder="Enter Todo Item" name='todoItem'>
+        <input type="hidden" placeholder="Enter name" name='userName' value=<%= user.userName %>>
+        <input type="text" placeholder="Enter your idea" name='todoItem'>
         <input type="submit">
     </form>
 
