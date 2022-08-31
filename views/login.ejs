@@ -1,10 +1,12 @@
+<%- include('partials/header') -%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Login / Boxify</title>
 </head>
 <body>
     <% if (locals.messages.errors) { %>
@@ -17,10 +19,19 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
-    </form>
+
+    <h1 class="">Login</h1>
+    <br>
+    <h2 class="">Continue sharing your suggestions!</h2>
+    <br>
+
+    <div class="">
+        <form class="" action="/login" method="POST">
+            <input class="" type="email" name="email" placeholder="Email">
+            <input class="" type="password" name="password" placeholder="Password">
+            <input class="" type="submit">
+        </form>    
+    </div>
+    
 </body>
 </html>
