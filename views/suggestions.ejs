@@ -19,7 +19,7 @@
     <% }) %>    
     </ul>
 
-    <h2><%= user.userName %> has <%= left %> things left to do.</h2>
+    <!-- <h2><%= user.userName %> has <%= left %> things left to do.</h2> -->
 
     <form action="/suggestions/createSuggestion" method='POST'>
         <input type="hidden" placeholder="Enter name" name='userName' value=<%= user.userName %>>
