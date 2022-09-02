@@ -1,7 +1,5 @@
 #suggestion page for small business
 
-### What we going to do?
-### Denis - -dataBase on main Page 
 
 
 
