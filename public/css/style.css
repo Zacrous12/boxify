@@ -127,6 +127,7 @@ img {
     justify-content: center;
     border: solid 2px rgba(2, 2, 2, 0.479);
     border-radius: 10px;
+    flex-wrap: wrap;
 }
 .secondary {
     margin: 4rem;
