@@ -4,9 +4,9 @@ module.exports = {
     getSuggestion: async (req,res)=>{
         console.log(req.user)
         try{
-            const suggestionItems = await Suggestion.find({userId:req.user.id})
-            const userName = await Suggestion.find({userId:req.user.id})
-            const suggestionsLeft = await Suggestion.find({userId:req.user.id})
+            const suggestionItems = await Suggestion.find()//{userId:req.user.id}
+            const userName = await Suggestion.find()
+            const suggestionsLeft = await Suggestion.find()
             const itemsLeft = await Suggestion.countDocuments({userId:req.user.id,completed: false})
             res.render('suggestions.ejs', {name: userName, suggestions: suggestionItems, left: suggestionsLeft, user: req.user})
         }catch(err){
