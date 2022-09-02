@@ -1,7 +1,7 @@
-const Todo = require('../models/Suggestion')
+const Suggestion = require('../models/Suggestion')
 
 module.exports = {
-    getTodos: async (req,res)=>{
+    getSuggestion: async (req,res)=>{
         console.log(req.user)
         try{
             const suggestionItems = await Suggestion.find({userId:req.user.id})

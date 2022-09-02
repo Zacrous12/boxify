@@ -10,6 +10,8 @@ const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const suggestionRoutes = require('./routes/suggestions')
 
+const PORT = 2121;
+
 require('dotenv').config({path: './config/.env'})
 
 // Passport config
@@ -42,6 +44,6 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/suggestions', suggestionRoutes)
  
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT || PORT, ()=>{
     console.log('Server is running, you better catch it! (PORT: ${PORT})')
 })    
