@@ -1,16 +1,6 @@
-#suggestion page for business
+# Suggestion page for business
 
 <p>This WEB Site will help improve your job area, colaborate with your team how to make job site better, what can be improved thear ... </p>
-
-
-
-
-
-
-
-
-
-
 
 # Packages/Dependencies used 
 
