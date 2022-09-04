@@ -23,10 +23,15 @@
 
     <form action="/suggestions/createSuggestion" method='POST'>
         <input type="hidden" placeholder="Enter name" name='userName' value=<%= user.userName %>>
+        <!-- <input type="text" placeholder="Enter room number" name='roomNumber' value=<%= user.userName %>> -->
         <input type="text" placeholder="Enter your idea" name='suggestionItem'>
         <input type="submit">
     </form>
-
+    <br>
+    <form action="/suggestions/sendRoomNumber" method="POST">
+        <input type="text" placeholder="Enter room number" name='roomNumber'>
+        <input type="submit">
+    </form>
     <a href="/logout">Logout</a>
 
     <script src="js/main.js"></script>
