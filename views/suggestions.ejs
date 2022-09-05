@@ -46,37 +46,44 @@
 		<main class="main">
 			<section class="leftsec">
 				<h5>Left Side Title</h5>
-				<p>Stuff for left sideStuff for left sideStuff for left sideStuff for left sideStuff for left sideStuff for left sideStuff for left sideStuff for left sideStuff for left side</p>
-				<p>Another paragraph for left sideAnother paragraph for left sideAnother paragraph for left sideAnother paragraph for left side</p>
+				<p>Hello <%= user.userName %>, in the end of the month, the system picks a random improver. </p>
+				
 			</section>
 			<section class="midsec">
 				<section class="suggestion">
-					<h1>How can we make our company better?</h1>
-					<ul>
-					<% suggestions.forEach( el => { %>
-							<li class='suggestionItem' data-id='<%=el._id%>'>
-								<span><%= el.name %></span>
-								<span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.suggestion %></span>
-								<span class='del'> Delete </span>
-							</li>
-					<% }) %>    
-					</ul>
-				
-					<!-- <h2><%= user.userName %> has <%= left %> things left to do.</h2> -->
-				
+                    
+                     
 
-
-          <form action="/suggestions/createSuggestion" method='POST' id="sendSugg" class="unHidden">
-              <input type="hidden" placeholder="Enter name" name='userName' value=<%= user.userName %>>
-              <!-- <input type="text" placeholder="Enter room number" name='roomNumber' value=<%= user.userName %>> -->
-              <input type="text" placeholder="Enter your idea" name='suggestionItem'>
-              <input type="submit">
-          </form>
-              <br>
-          <form action="/suggestions/sendRoomNumber" method="POST" id="enterVar" >
-              <input type="text" placeholder="Enter room number" name='roomNumber'>
-              <input type="submit" id="enterVarButton">
-          </form>
+ 
+                  <% if (roomNumber == null) { %>
+                    <div id="enterVar">
+                        <h1>Enter unique room name or number.</h1>
+                        <form action="/suggestions/sendRoomNumber" method="POST">
+                            <input type="text" placeholder="Enter room number" name='roomNumberInput'>
+                            <input type="submit" id="enterVarButton">
+                        </form>
+                    </div>  
+                 <% } else{ %>  
+                    <div  id="sendSugg">
+                        <h1>How can we make our company better?</h1>
+                        <ul>
+                        <% suggestions.forEach( el => { %>
+                                <li class='suggestionItem' data-id='<%=el._id%>'>
+                                    <span><%= el.name %></span>
+                                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.suggestion %></span>
+                                    <span class='del'> Delete </span>
+                                </li>
+                        <% }) %>    
+                        </ul>
+                        <form action="/suggestions/createSuggestion" method='POST' >
+                            
+                            <input type="hidden" placeholder="Enter name" name='userName' value=<%= user.userName %>>
+                            <input type="hidden" placeholder="Enter room number" name='roomName' value=<%= roomNumber %>>
+                            <input type="text" placeholder="Enter your idea" name='suggestionItem'>
+                            <input type="submit">
+                        </form>
+                    </div>
+                 <% } %>
 					<!-- <h2>Suggestion Title</h2>
 					<address class="author">By John Bigly</address>
 					<p>Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion</p>

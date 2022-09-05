@@ -9,6 +9,10 @@ const SuggestionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  cabinetNumber: {
+    type: String,
+    required: true,
+  },
   completed: {
     type: Boolean,
     required: true,

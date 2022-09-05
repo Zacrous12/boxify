@@ -10,14 +10,14 @@ module.exports = {
             const userName = await Suggestion.find({cabinetNumber: room})
             const suggestionsLeft = await Suggestion.find({cabinetNumber: room})
             const itemsLeft = await Suggestion.countDocuments({userId:req.user.id,completed: false})
-            res.render('suggestions.ejs', {name: userName, suggestions: suggestionItems, left: suggestionsLeft, user: req.user})
+            res.render('suggestions.ejs', {name: userName, suggestions: suggestionItems, left: suggestionsLeft, user: req.user, roomNumber: room})
         }catch(err){
             console.log(err)
         }
     },
     createSuggestion: async (req, res)=>{
         try{
-            await Suggestion.create({name: req.body.userName, suggestion: req.body.suggestionItem, completed: false, userId: req.user.id})
+            await Suggestion.create({name: req.body.userName, suggestion: req.body.suggestionItem, cabinetNumber: req.body.roomName, completed: false, userId: req.user.id})
             console.log('Suggestion has been added!')
             res.redirect('/suggestions')
         }catch(err){
@@ -26,9 +26,10 @@ module.exports = {
     },
     sendRoomNumber: async (req, res)=>{
         try{
-            room = req.body.roomNumber
+            room = req.body.roomNumberInput
             console.log('Room number has been gotten!')
-            console.log(req.body.roomNumber)
+            console.log(req.body.roomNumberInput)
+
             res.redirect('/suggestions')
         }catch(err){
             console.log(err)
