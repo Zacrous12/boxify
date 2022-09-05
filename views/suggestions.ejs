@@ -21,16 +21,19 @@
 
     <!-- <h2><%= user.userName %> has <%= left %> things left to do.</h2> -->
 
-    <form action="/suggestions/createSuggestion" method='POST'>
+    <%=if() %>
+    <p>req.body.roomNumber</p>
+
+    <form action="/suggestions/createSuggestion" method='POST' id="sendSugg" class="unHidden">
         <input type="hidden" placeholder="Enter name" name='userName' value=<%= user.userName %>>
         <!-- <input type="text" placeholder="Enter room number" name='roomNumber' value=<%= user.userName %>> -->
         <input type="text" placeholder="Enter your idea" name='suggestionItem'>
         <input type="submit">
     </form>
     <br>
-    <form action="/suggestions/sendRoomNumber" method="POST">
+    <form action="/suggestions/sendRoomNumber" method="POST" id="enterVar" >
         <input type="text" placeholder="Enter room number" name='roomNumber'>
-        <input type="submit">
+        <input type="submit" id="enterVarButton">
     </form>
     <a href="/logout">Logout</a>
 
