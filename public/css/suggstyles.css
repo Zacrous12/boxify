@@ -1,0 +1,42 @@
+.main {
+    height: 130rem;
+}
+
+.main > section {
+    display: flex;
+    height: 110rem;
+    padding: 4rem;
+    flex-direction: column;
+}
+
+.leftsec {
+    align-content: center;
+    width: 15%;
+}
+
+.midsec{
+    width: 50%;
+
+}
+
+.rightsec {
+    align-self: flex-start;
+    width: 15%;
+}
+
+.suggestion {
+    border-bottom: solid rgba(0, 0, 0, 0.541) 2px;
+    line-height: 5rem; 
+}
+
+.footer {
+    margin: 4rem;
+    height: 20rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2rem;
+    justify-content: center;
+    border: solid 2px rgba(2, 2, 2, 0.479);
+    border-radius: 10px;
+    align-items: center;
+}

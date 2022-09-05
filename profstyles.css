@@ -1,0 +1,25 @@
+.bigpro {
+    padding-top: 2rem;
+    height: auto;
+    width: 180px;
+    border-radius: 300px;
+}
+.saved, .imp {
+    width: 30%;
+    padding: 10rem;
+    padding-bottom: 0;
+    height: 50rem;
+}
+.pastidea {
+    font-size: 8rem;
+    width: 80%;
+    padding: 2rem;
+    margin: 0;
+}
+.pastidea > li {
+    padding-bottom: rem; 
+}
+.deets {
+    font-size: 4rem;
+    padding-left: 8rem;
+}
