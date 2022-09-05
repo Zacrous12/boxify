@@ -18,8 +18,12 @@ body {
     opacity: 1;
     background-image: radial-gradient(#444cf7 0.55px, #ffffff 0.55px);
     background-size: 11px 11px;
+    transition: background-position 50s;
 }
-
+body:hover {
+    background-position: 50%;
+    transition: background-position 50s ease-in-out;
+}
 
 /* 
 PAGE STYLES 
