@@ -1,6 +1,9 @@
 const deleteBtn = document.querySelectorAll('.del')
 const suggestionItem = document.querySelectorAll('span.not')
 const suggestionComplete = document.querySelectorAll('span.completed')
+const enterVar = document.querySelector('#enterVar')//Hide var input and show sugg input
+const sendSugg = document.querySelector('#sendSugg')//Hide var input and show sugg input
+const enterVarButton = document.querySelector('#enterVarButton')//Hide var input and show sugg input
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteSuggestion)
@@ -66,4 +69,11 @@ async function markIncomplete(){
     }catch(err){
         console.log(err)
     }
+}
+
+//Hide var input and show sugg input
+enterVarButton.addEventListener('click', hideVarInput)
+function hideVarInput(){
+    if(sendSugg.classList.contains('unHidden')){
+    enterVar.classList.toggle('hidden')}
 }

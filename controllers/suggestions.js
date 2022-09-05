@@ -1,12 +1,14 @@
 const Suggestion = require('../models/Suggestion')
+let room
 
 module.exports = {
     getSuggestion: async (req,res)=>{
         console.log(req.user)
         try{
-            const suggestionItems = await Suggestion.find()//{userId:req.user.id}
-            const userName = await Suggestion.find()
-            const suggestionsLeft = await Suggestion.find()
+            const suggestionItems = await Suggestion.find({cabinetNumber: room})//{userId:req.user.id}
+            console.log(room)//test
+            const userName = await Suggestion.find({cabinetNumber: room})
+            const suggestionsLeft = await Suggestion.find({cabinetNumber: room})
             const itemsLeft = await Suggestion.countDocuments({userId:req.user.id,completed: false})
             res.render('suggestions.ejs', {name: userName, suggestions: suggestionItems, left: suggestionsLeft, user: req.user})
         }catch(err){
@@ -17,6 +19,16 @@ module.exports = {
         try{
             await Suggestion.create({name: req.body.userName, suggestion: req.body.suggestionItem, completed: false, userId: req.user.id})
             console.log('Suggestion has been added!')
+            res.redirect('/suggestions')
+        }catch(err){
+            console.log(err)
+        }
+    },
+    sendRoomNumber: async (req, res)=>{
+        try{
+            room = req.body.roomNumber
+            console.log('Room number has been gotten!')
+            console.log(req.body.roomNumber)
             res.redirect('/suggestions')
         }catch(err){
             console.log(err)
