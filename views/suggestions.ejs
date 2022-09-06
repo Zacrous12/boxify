@@ -1,123 +1,192 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html lang="en">
 	<head>
-  	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  	<meta name="description" content="Your description goes here">
-  	<meta name="keywords" content="one, two, three">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Generic - Phantom by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+		<noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="#" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">logoName</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="/logout">Logout</a></li>
+							<li><a href="/suggestions">Home</a></li>
+							<li><a href="#">Winners</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Contact Us</a></li>
+
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Hello <%= user.userName %>.</h1>
+							<span class="image main"><img src="images/pic13.jpg" alt="" /></span>
+							<% if (roomNumber == null) { %>
+								<div id="enterVar">
+									<h1>Enter unique room name or number.</h1>
+									<form action="/suggestions/sendRoomNumber" method="POST">
+
+										<div class="fields">
+											<div class="field">
+												<input type="text" placeholder="Enter room number" name='roomNumberInput'>
+											</div>
+										</div>
+
+										<ul class="actions">
+											<li><input type="submit" id="enterVarButton" class="primary"></li>
+										</ul>	
+
+
+										<!-- <input type="text" placeholder="Enter room number" name='roomNumberInput'>
+										<input type="submit" id="enterVarButton"> -->
+									</form>
+								</div>  
+							 <% } else{ %>  
+								<div  id="sendSugg" class="inner">
+									<h1>What can make your company better?</h1>
+
+
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</thead>
+											<tbody>
+												<% suggestions.forEach( el => { %>
+												<tr class='suggestionItem' data-id='<%=el._id%>'>
+													<th><%= el.name %></th>
+												
+													<th class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.suggestion %></th>
+												<!-- <span class='del'> Delete </span> -->
+												<th><time datetime="2022-12-12 06:42:45">12/12/2022 6:42 AM</time></th>
 		
-		<title>Blank Template</title>
-
-		<!-- external CSS link -->
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="css/suggstyles.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&family=Roboto:wght@300;400&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
-	<body>
-		<header>
-			<nav class="topbar">
-				<ul class="items">
-					<li class="profpic">
-						<a href="profile.html"><img src="https://previews.123rf.com/images/urfandadashov/urfandadashov1809/urfandadashov180902667/109317646-profile-pic-vector-icon-isolated-on-transparent-background-profile-pic-logo-concept.jpg" alt="profile"></a>
-					</li>
-					<li>
-						<a href="#">Suggestions</a>
-					</li>
-					<li>
-						<a href="#">Contributors</a>
-					</li>
-					<li>
-						<a href="#">Exchange</a>
-					</li>
-					<li>
-						<a href="#">Trending</a>
-					</li>
-					<li>
-						<a href="#">Your Business</a>
-					</li>
-					<li>
-						<a href="#">Submit an Idea</a>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		<main class="main">
-			<section class="leftsec">
-				<h5>Left Side Title</h5>
-				<p>Hello <%= user.userName %>, in the end of the month, the system picks a random improver. </p>
-                <h5>List of winners:</h5>
-                <p>First One</p>
-				<p>Second One</p>
-			</section>
-			<section class="midsec">
-				<section class="suggestion">
-                    
-                     
-
- 
-                  <% if (roomNumber == null) { %>
-                    <div id="enterVar">
-                        <h1>Enter unique room name or number.</h1>
-                        <form action="/suggestions/sendRoomNumber" method="POST">
-                            <input type="text" placeholder="Enter room number" name='roomNumberInput'>
-                            <input type="submit" id="enterVarButton">
-                        </form>
-                    </div>  
-                 <% } else{ %>  
-                    <div  id="sendSugg">
-                        <h1>How can we make our company better?</h1>
-                        <ul>
-                        <% suggestions.forEach( el => { %>
-                                <li class='suggestionItem' data-id='<%=el._id%>'>
-                                    <span><%= el.name %></span>
-                                    <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.suggestion %></span>
-                                    <span class='del'> Delete </span>
-                                </li>
-                        <% }) %>    
-                        </ul>
-                        <form action="/suggestions/createSuggestion" method='POST' >
-                            
-                            <input type="hidden" placeholder="Enter name" name='userName' value=<%= user.userName %>>
-                            <input type="hidden" placeholder="Enter room number" name='roomName' value=<%= roomNumber %>>
-                            <input type="text" placeholder="Enter your idea" name='suggestionItem'>
-                            <input type="submit">
-                        </form>
-                    </div>
-                 <% } %>
-					<!-- <h2>Suggestion Title</h2>
-					<address class="author">By John Bigly</address>
-					<p>Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion</p>
-					<time datetime="2022-12-12 06:42:45">12/12/2022 6:42 AM</time> -->
-				</section>
-				<!-- <section class="suggestion">
-					<h2>Suggestion Title</h2>
-					<address class="author">By John Bigly</address>
-					<p>Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion Some words here for the text of the suggesttion</p>
-					<time datetime="2022-12-12 06:42:45">12/12/2022 6:42 AM</time>
-				</section>
-				<input type="search" placeholder="Input"> -->
-
-			</section>
-			<section class="rightsec">
-				<h6>Right Side Title</h6>
-				<a href="">Change room number</a>
-			</section>
-		</main>
-		<section class="footer">
-			<p>Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the Big placeholder for the footer</p>
-
-            <a href="/logout">Logout</a>
-        </section>
-
-		   
-    </section>
+												
+												</tr>
+												
+												<% }) %>  
+											</tbody>
+										</table>
+									</div>
 
 
+									<!-- <ul>
+									<% suggestions.forEach( el => { %>
+											<li class='suggestionItem' data-id='<%=el._id%>'>
+												<span><%= el.name %></span>
+												<span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.suggestion %></span>
+												<span class='del'> Delete </span>
+											</li>
+									<% }) %>    
+									</ul> -->
+									<form action="/suggestions/createSuggestion" method='POST' >
 
+										<div class="fields">
+											<div class="field half">
+												<input type="hidden" placeholder="Enter name" name='userName' value=<%= user.userName %>>
+											</div>
+											<div class="field half">
+												<input type="hidden" placeholder="Enter room number" name='roomName' value=<%= roomNumber %>>
+											</div>
+											<div class="field">
+												<input type="text" placeholder="Enter your idea" name='suggestionItem' class="fields">
+											</div>
+										</div>
 
-    <script src="js/main.js"></script>
+										<ul class="actions">
+											<li><input type="submit" value="Submit" class="primary"></li>
+										</ul>	
+
+									</form>
+								</div>
+							 <% } %>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<!-- <section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section> -->
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/browser.min.js"></script>
+			<script src="js/breakpoints.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+
 	</body>
-
-	
+</html>
