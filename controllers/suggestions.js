@@ -1,4 +1,5 @@
 const Suggestion = require('../models/Suggestion')
+const moment = require('moment')
 let room
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
             const userName = await Suggestion.find({cabinetNumber: room})
             const suggestionsLeft = await Suggestion.find({cabinetNumber: room})
             const itemsLeft = await Suggestion.countDocuments({userId:req.user.id,completed: false})
-            res.render('suggestions.ejs', {name: userName, suggestions: suggestionItems, left: suggestionsLeft, user: req.user, roomNumber: room})
+            res.render('suggestions.ejs', {name: userName, suggestions: suggestionItems, left: suggestionsLeft, user: req.user, roomNumber: room, moment: moment})
         }catch(err){
             console.log(err)
         }
